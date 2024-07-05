@@ -8,7 +8,7 @@ namespace
 	float MOVE_SPEED = 3.5f;
 	float GRUVITY = 9.0f / 60.0f; //重力
 	float GROUND = 300.0f;
-	float JUMP_HEIGHT = 100.0f * 2.0f;//ジャンプの高さ
+	float JUMP_HEIGHT = 50.0f * 2.0f;//ジャンプの高さ
 
 }
 Player::Player(GameObject* scene)
@@ -31,7 +31,7 @@ Player::~Player()
 void Player::Update()
 {
 	Field* pField = GetParent()->FindGameObject<Field>();
-	/*if (CheckHitKey(KEY_INPUT_RIGHT))
+	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
 		transform_.position_.x += MOVE_SPEED;
 		if (++FrameCounter >= 8) {
@@ -39,7 +39,7 @@ void Player::Update()
 			FrameCounter = 0;
 		}
 
-	}*/
+	}
 	/*else if (CheckHitKey(KEY_INPUT_LEFT))
 	{
 		transform_.position_.x -= MOVE_SPEED;
@@ -48,14 +48,14 @@ void Player::Update()
 			FrameCounter = 0;
 		}
 	}*/
-	/*else
+	else
 	{
 		FrameCounter = 0;
 		animFrame = 0;
-	}*/
+	}
 
 	//↓プレイヤーが強制スクロールについていくための処理
-	transform_.position_.x += MOVE_SPEED;
+	//transform_.position_.x += MOVE_SPEED;
 
 
 	if (CheckHitKey(KEY_INPUT_SPACE)) {
@@ -72,14 +72,6 @@ void Player::Update()
 	}
 	JUMP_SPEED += GRUVITY;//速度 + 加速度
 	transform_.position_.y += JUMP_SPEED;
-	/*JUMP_SPEED += GRUVITY;
-	transform_.position_.y += JUMP_SPEED;*/
-	/*if (transform_.position_.y >= GROUND)
-	{
-		transform_.position_.y = GROUND;
-		JUMP_SPEED = 0.0f;
-		onground = true;
-	}*/
 	//↓岩にぶつかる（右横）
 	if (pField != nullptr) {
 		int pushR = pField->CollisionDown(transform_.position_.x + 50, transform_.position_.y + 85);
@@ -139,13 +131,13 @@ void Player::Update()
 	}
 	//↓カメラの位置を調整
 	Camera* cam = GetParent()->FindGameObject<Camera>();
-	cam->SetValue(cam->GetValue() + 1.5f);
+	//cam->SetValue(cam->GetValue() + 1.5f);
 
-	/*int x = (int)transform_.position_.x - cam->GetValue();
+	int x = (int)transform_.position_.x - cam->GetValue();
 	if (x > 400) {
 		x = 400;
 		cam->SetValue((int)transform_.position_.x - x);
-	}*/
+	}
 }
 
 void Player::Draw()
@@ -160,5 +152,11 @@ void Player::Draw()
 		DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 	}
 
+}
+
+void Player::SetPosition(int x, int y)
+{
+	transform_.position_.x;
+	transform_.position_.y;
 }
 
