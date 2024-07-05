@@ -139,7 +139,7 @@ void Player::Update()
 	}
 	//«ƒJƒƒ‰‚ÌˆÊ’u‚ð’²®
 	Camera* cam = GetParent()->FindGameObject<Camera>();
-	cam->SetValue(cam->GetValue() + 7.5);
+	cam->SetValue(cam->GetValue() + 1.5f);
 
 	/*int x = (int)transform_.position_.x - cam->GetValue();
 	if (x > 400) {

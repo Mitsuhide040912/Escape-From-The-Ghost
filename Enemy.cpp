@@ -5,10 +5,10 @@
 #include "Player.h"
 Enemy::Enemy(GameObject* scene)
 {
-	hImage = LoadGraph("Assets/snake.png");
+	hImage = LoadGraph("Assets/henkouEnemy3.png");
 	assert(hImage > 0);
 	transform_.position_.x = -400.0f;
-	transform_.position_.y = 700.0f;
+	transform_.position_.y = 800.0f;
 }
 
 Enemy::~Enemy()
@@ -26,7 +26,7 @@ void Enemy::Update()
 	transform_.position_.x += 0.9f;
 	sinAngle += 3.0f;//“x
 	float sinValue = sinf(sinAngle * DX_PI_F / 180.0f);
-	transform_.position_.y = 300.0f + sinValue * 0.0f;
+	transform_.position_.y = 500.0f + sinValue * 10.0f;
 
 	Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr) {

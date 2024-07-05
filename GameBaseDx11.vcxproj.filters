@@ -40,6 +40,8 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="CoolTimer.cpp" />
+    <ClCompile Include="Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -67,5 +69,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="CoolTimer.h" />
+    <ClInclude Include="Bullet.h" />
   </ItemGroup>
 </Project>
