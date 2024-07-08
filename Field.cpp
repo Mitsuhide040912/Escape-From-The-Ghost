@@ -4,7 +4,7 @@
 #include "Engine/CsvReader.h"
 #include "Camera.h"
 #include "Player.h"
-
+#include "Enemy.h"
 Field::Field(GameObject* parent)
 	:GameObject(parent)
 {
@@ -65,7 +65,7 @@ void Field::Reset()
 
 
 	for (int h = 0; h < height; h++){
-		if (csv.GetString(0, h) == " ") {
+		if (csv.GetString(0, h) == "") {
 			height = h;
 			break;
 		}
@@ -84,7 +84,11 @@ void Field::Reset()
 				Player* pPlayer = GetParent()->FindGameObject<Player>();
 				pPlayer->SetPosition(w * 32, h * 32);
 			}
-			default:
+			case 1:
+			{
+				Enemy* pEnemy = GetParent()->FindGameObject<Enemy>();
+				pEnemy->SetPosition(w * 32, h * 32);
+			}
 				break;
 			}
 		}

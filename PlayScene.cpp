@@ -5,6 +5,7 @@
 //#include "Bird.h"
 #include "Enemy.h"
 #include "BackGround.h"
+#include "Bullet.h"
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene")
 {
@@ -18,6 +19,7 @@ void PlayScene::Initialize()
 	Field* pField = Instantiate<Field>(this);
 	pField->Reset();
 	Instantiate<Enemy>(this);
+	Instantiate<Bullet>(this);
 	Instantiate<Player>(this);
 }
 

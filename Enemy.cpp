@@ -5,7 +5,7 @@
 #include "Player.h"
 Enemy::Enemy(GameObject* scene)
 {
-	hImage = LoadGraph("Assets/henkouEnemy3.png");
+	hImage = LoadGraph("Assets/snake.png");
 	assert(hImage > 0);
 	transform_.position_.x = -400.0f;
 	transform_.position_.y = 800.0f;
@@ -60,10 +60,16 @@ void Enemy::Draw()
 	//DrawRectGraph(x + 20, y + 20,200,200, 64,64, hImage, TRUE);
 	//DrawRectGraph(x, y, 10, 300, 100, 100, hImage, TRUE);
 	DrawGraph(x, y, hImage, TRUE);
-	Camera* cam = GetParent()->FindGameObject<Camera>();
+	/*Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr) {
 		x -= cam->GetValue();
-	}
+	}*/
+}
+
+void Enemy::SetPosition(int x, int y)
+{
+	transform_.position_.x;
+	transform_.position_.y;
 }
 
 bool Enemy::CollideCircle(float x, float y, float r)

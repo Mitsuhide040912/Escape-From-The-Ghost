@@ -2,7 +2,7 @@
 
 #include "../TestScene.h"
 #include "../PlayScene.h"
-
+#include "../TitleScene.h"
 //コンストラクタ
 SceneManager::SceneManager(GameObject * parent)
 	: GameObject(parent, "SceneManager")

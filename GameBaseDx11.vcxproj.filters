@@ -42,6 +42,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="CoolTimer.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -71,5 +72,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="CoolTimer.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
 </Project>
