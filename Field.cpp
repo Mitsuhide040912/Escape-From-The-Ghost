@@ -60,9 +60,8 @@ void Field::Reset()
 	bool ret = csv.Load("Assets/stage01.csv");
 	assert(ret);
 	width = csv.GetWidth(0);
-	height = 22;//csv.GetHeight();
+	height = csv.GetHeight();
 	Map = new int[width * height];
-
 
 	for (int h = 0; h < height; h++){
 		if (csv.GetString(0, h) == "") {
@@ -73,10 +72,9 @@ void Field::Reset()
 			Map[h * width + w] = csv.GetInt(w, h);
 		}
 	}
-	for (int h = 0; h < height; h++)
-	{
-		for (int w = 0; w < width; w++)
-		{
+
+	for (int h = 0; h < height; h++){
+		for (int w = 0; w < width; w++){
 			switch (csv.GetInt(w,h+height+1))
 			{
 			case 0:
@@ -86,30 +84,22 @@ void Field::Reset()
 			}
 			case 1:
 			{
-				Enemy* pEnemy = GetParent()->FindGameObject<Enemy>();
+				Enemy* pEnemy = Instantiate<Enemy>(GetParent());
 				pEnemy->SetPosition(w * 32, h * 32);
 			}
 				break;
 			}
 		}
 	}
-	/*for (int x = 0; x < WIDTH; x++)
-	{
-		for (int y = 0; y < HEIGHT; y++)
-		{
-			int chip = Map[x][y];
-			DrawRectGraph(x * 32, y * 32, 32 * (chip / 16), 32 * (chip / 16), 32, 32, hImage, TRUE);
-		}
-	}*/
 }
 
 int Field::CollisionRight(int x, int y)
 {
-	/*if (IsWallBlock(x, y))
+	if (IsWallBlock(x, y))
 	{
 		return y % 32 + 1;
 		return 0;
-	}*/
+	}
 	int chipX = x / 32;
 	int chipY = y / 32;
 	switch (Map[chipY * width + chipX]) {
@@ -128,11 +118,11 @@ int Field::CollisionRight(int x, int y)
 
 int Field::CollisionLeft(int x, int y)
 {
-	/*if (IsWallBlock(x, y))
+	if (IsWallBlock(x, y))
 	{
 		return y % 32 - 1;
 		return 0;
-	}*/
+	}
 	int chipX = x / 32;
 	int chipY = y / 32;
 	switch (Map[chipY * width + chipX]) {
@@ -151,11 +141,11 @@ int Field::CollisionLeft(int x, int y)
 
 int Field::CollisionDown(int x, int y)
 {
-	/*if (IsWallBlock(x, y))
+	if (IsWallBlock(x, y))
 	{
 		return y % 32 + 1;
 		return 0;
-	}*/
+	}
 	int chipX = x / 32;
 	int chipY = y / 32;
 	switch (Map[chipY * width + chipX]) {

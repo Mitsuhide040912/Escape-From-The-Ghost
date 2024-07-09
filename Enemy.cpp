@@ -23,7 +23,7 @@ void Enemy::Update()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
-	transform_.position_.x += 0.9f;
+	transform_.position_.x += 0.5f;
 	sinAngle += 3.0f;//“x
 	float sinValue = sinf(sinAngle * DX_PI_F / 180.0f);
 	transform_.position_.y = 500.0f + sinValue * 10.0f;
@@ -57,8 +57,6 @@ void Enemy::Draw()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
-	//DrawRectGraph(x + 20, y + 20,200,200, 64,64, hImage, TRUE);
-	//DrawRectGraph(x, y, 10, 300, 100, 100, hImage, TRUE);
 	DrawGraph(x, y, hImage, TRUE);
 	/*Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr) {
