@@ -22,9 +22,6 @@
     <ClCompile Include="Engine\RootObject.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\CsvReader.cpp">
-      <Filter>01Engine\ResourceManager</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Main.cpp">
       <Filter>01Engine</Filter>
     </ClCompile>
@@ -44,6 +41,9 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="thorn.cpp" />
+    <ClCompile Include="Engine\CsvReader.cpp">
+      <Filter>01Engine\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -51,9 +51,6 @@
     </ClInclude>
     <ClInclude Include="Engine\RootObject.h">
       <Filter>01Engine\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\CsvReader.h">
-      <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Global.h">
       <Filter>01Engine</Filter>
@@ -75,5 +72,8 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="thorn.h" />
+    <ClInclude Include="Engine\CsvReader.h">
+      <Filter>01Engine\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ bool CsvReader::Load(std::string filename)
 	// BOM Skip‚·‚é
 	unsigned char BOMS[] = { 0xEF, 0xBB, 0xBF };
 	bool found = true;
-	for (int i = 0; i < 3; i++) {
+	for (int i=0; i<3; i++) {
 		if (ifs.get() != BOMS[i]) {
 			found = false;
 			break;
@@ -36,7 +36,7 @@ bool CsvReader::Load(std::string filename)
 	while (getline(ifs, lineStr)) {
 		while (true) {
 			int dq = 0;
-			for (int i = 0; i < lineStr.size(); i++) {
+			for (int i=0; i<lineStr.size(); i++) {
 				if (lineStr[i] == '"')
 					dq++;
 			}
@@ -46,8 +46,8 @@ bool CsvReader::Load(std::string filename)
 			getline(ifs, s);
 			lineStr += "\n" + s;
 		}
-		for (auto it = lineStr.begin(); it != lineStr.end();) {
-			if (*it == '"')
+		for (auto it = lineStr.begin(); it!=lineStr.end();) {
+			if (*it=='"')
 				it = lineStr.erase(it);
 			if (it != lineStr.end())
 				it++;
@@ -58,13 +58,12 @@ bool CsvReader::Load(std::string filename)
 		int top = 0;
 		bool indq = false;
 		for (int n = 0; n < lineStr.size(); n++) {
-			if (lineStr[n] == ',') {
+			if (lineStr[n]==',') {
 				if (!indq) {
 					lineRecord.record.emplace_back(lineStr.substr(top, (size_t)(n - top)));
 					top = n + 1;
 				}
-			}
-			else if (lineStr[n] == '"')
+			} else if (lineStr[n] == '"')
 				indq = !indq;
 		}
 		lineRecord.record.emplace_back(lineStr.substr(top, lineStr.size() - top));

@@ -57,10 +57,10 @@ void Field::Reset()
 		Map = nullptr;
 	}
 	CsvReader csv;
-	bool ret = csv.Load("Assets/stage01.csv");
+	bool ret = csv.Load("Assets/stage1.csv");
 	assert(ret);
 	width = csv.GetWidth(0);
-	height = csv.GetHeight();
+	height = 22;//csv.GetHeight();
 	Map = new int[width * height];
 
 	for (int h = 0; h < height; h++){
@@ -89,6 +89,7 @@ void Field::Reset()
 			}
 				break;
 			}
+			//Map[h * width + w] = csv.GetInt(w, h);
 		}
 	}
 }

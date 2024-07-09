@@ -6,7 +6,7 @@ Bullet::Bullet(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/Kaoru.png");
 	assert(hImage > 0);
-	transform_.position_.x = -100.0f;
+	transform_.position_.x = 10.0f;
 	transform_.position_.y = 800.0f;
 }
 

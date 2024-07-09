@@ -13,14 +13,15 @@ PlayScene::PlayScene(GameObject* parent)
 
 void PlayScene::Initialize()
 {
-	Instantiate<Camera>(this);
 	Instantiate<BackGround>(this);
+	Instantiate<Camera>(this);
 	//Instantiate<Field>(this);
 	Field* pField = Instantiate<Field>(this);
 	pField->Reset();
+	Instantiate<Player>(this);
 	Instantiate<Enemy>(this);
 	Instantiate<Bullet>(this);
-	Instantiate<Player>(this);
+	
 }
 
 void PlayScene::Update()

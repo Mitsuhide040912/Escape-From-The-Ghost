@@ -38,16 +38,27 @@ void Player::Update()
 			animFrame = (animFrame + 1) % 4;
 			FrameCounter = 0;
 		}
-
+		int hitX = transform_.position_.x + 50;
+		int hitY = transform_.position_.y + 60;
+		if (pField != nullptr){
+			int push = pField->CollisionRight(hitX, hitY);
+			transform_.position_.x -= push;
+		}
 	}
-	/*else if (CheckHitKey(KEY_INPUT_LEFT))
+	else if (CheckHitKey(KEY_INPUT_LEFT))
 	{
 		transform_.position_.x -= MOVE_SPEED;
 		if (++FrameCounter >= 8) {
 			animFrame = (animFrame + 1) % 4;
 			FrameCounter = 0;
 		}
-	}*/
+		int hitX = transform_.position_.x + 25;
+		int hitY = transform_.position_.y + 40;
+		if (pField != nullptr){
+			int push = pField->CollisionLeft(hitX, hitY);
+			transform_.position_.x += push;
+		}
+	}
 	else
 	{
 		FrameCounter = 0;
@@ -73,7 +84,7 @@ void Player::Update()
 	JUMP_SPEED += GRUVITY;//速度 + 加速度
 	transform_.position_.y += JUMP_SPEED;
 	//↓岩にぶつかる（右横）
-	if (pField != nullptr) {
+	/*if (pField != nullptr) {
 		int pushR = pField->CollisionDown(transform_.position_.x + 50, transform_.position_.y + 85);
 		int pushL = pField->CollisionDown(transform_.position_.x + 40, transform_.position_.y + 85);
 		int push = max(pushR, pushL);
@@ -86,7 +97,7 @@ void Player::Update()
 		else {
 			onground = false;
 		}
-	}
+	}*/
 	//↓岩にぶつかる（左横）
 	/*if (pField != nullptr) {
 		int pushR = pField->CollisionDown(transform_.position_.x + 50, transform_.position_.y + 85);
