@@ -3,6 +3,7 @@
 #include <DxLib.h>
 #include <assert.h>
 #include "Field.h"
+#include "Enemy.h"
 namespace
 {
 	float MOVE_SPEED = 3.5f;
@@ -15,7 +16,7 @@ Player::Player(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/PikoC-Girl01.png");
 	assert(hImage > 0);
-	transform_.position_.x = 300.0f;
+	transform_.position_.x = 800.0f;
 	transform_.position_.y = GROUND;
 	onground = true;
 }
@@ -144,10 +145,26 @@ void Player::Update()
 	Camera* cam = GetParent()->FindGameObject<Camera>();
 	//cam->SetValue(cam->GetValue() + 1.5f);
 
-	int x = (int)transform_.position_.x - cam->GetValue();
-	if (x > 400) {
-		x = 400;
-		cam->SetValue((int)transform_.position_.x - x);
+	int xR = (int)transform_.position_.x - cam->GetValue();
+	if (xR > 400) {
+		xR = 400;
+		cam->SetValue((int)transform_.position_.x - xR);
+	}
+	int xL = (int)transform_.position_.x + cam->GetValue();
+	if (xL > 400) {
+		xL = 400;
+		cam->SetValue((int)transform_.position_.x - xL);
+	}
+
+	//“–‚½‚è”»’èplayer.cpp
+	std::list<Enemy*> pEnemys = GetParent()->FindGameObjects<Enemy>();
+	for (Enemy* pEnemy : pEnemys)
+	{
+		if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
+		{
+			//“–‚½‚Á‚½ˆ—
+			KillMe();
+		}
 	}
 }
 
@@ -160,9 +177,9 @@ void Player::Draw()
 	if (cam != nullptr)
 	{
 		x -= cam->GetValue();
-		DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 	}
 
+	DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 }
 
 void Player::SetPosition(int x, int y)

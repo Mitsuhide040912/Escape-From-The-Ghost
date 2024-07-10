@@ -34,7 +34,6 @@
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="CoolTimer.cpp" />
@@ -65,7 +64,6 @@
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="BackGround.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="CoolTimer.h" />

@@ -12,10 +12,11 @@ public:
 	void Update() override;
 	void Draw() override;
 	void SetPosition(int x, int y);
+	bool CollideCircle(float x, float y, float r);
 private:
 	int hImage;
 	float sinAngle;
-	bool CollideCircle(float x, float y, float r);
+	
 	double vx;//
 };
 

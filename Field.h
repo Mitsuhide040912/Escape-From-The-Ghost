@@ -8,7 +8,7 @@ public:
     Field(GameObject* parent);
     ~Field();
     void Update()override;
-    void Draw();
+    void Draw()override;
     void Reset();
     int CollisionRight(int x, int y);
     int CollisionLeft(int x, int y);
@@ -20,4 +20,5 @@ private:
     int* Map;
     int width;
     int height;
+    int hBackGround;
 };

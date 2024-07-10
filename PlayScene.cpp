@@ -2,9 +2,7 @@
 #include "Field.h"
 #include "Player.h"
 #include "Camera.h"
-//#include "Bird.h"
 #include "Enemy.h"
-#include "BackGround.h"
 #include "Bullet.h"
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene")
@@ -13,7 +11,7 @@ PlayScene::PlayScene(GameObject* parent)
 
 void PlayScene::Initialize()
 {
-	Instantiate<BackGround>(this);
+	//Instantiate<BackGround>(this);
 	Instantiate<Camera>(this);
 	//Instantiate<Field>(this);
 	Field* pField = Instantiate<Field>(this);
