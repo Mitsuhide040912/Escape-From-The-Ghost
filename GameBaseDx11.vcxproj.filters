@@ -14,6 +14,15 @@
     <Filter Include="01Engine\ResourceManager">
       <UniqueIdentifier>{bedee914-5063-4c08-95bb-79c861b4969c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{8fe65515-5d8c-49ee-8cfe-5765f1931224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemies">
+      <UniqueIdentifier>{aab7b0cd-4b22-42ce-8c1c-d280d64cd067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScene">
+      <UniqueIdentifier>{89ccb084-7164-44fe-a177-d4ed5a17449e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\GameObject.cpp">
@@ -31,17 +40,28 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="CoolTimer.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="thorn.cpp" />
     <ClCompile Include="Engine\CsvReader.cpp">
       <Filter>01Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="thorn.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,18 +80,29 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h" />
-    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="CoolTimer.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="thorn.h" />
     <ClInclude Include="Engine\CsvReader.h">
       <Filter>01Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="thorn.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>GameScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

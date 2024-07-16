@@ -4,9 +4,11 @@
 #include <assert.h>
 #include "Field.h"
 #include "Enemy.h"
+#include "Bullet.h"
+#include "thorn.h"
 namespace
 {
-	float MOVE_SPEED = 3.5f;
+	float MOVE_SPEED = 2.5f;
 	float GRUVITY = 9.0f / 60.0f; //èdóÕ
 	float GROUND = 300.0f;
 	float JUMP_HEIGHT = 50.0f * 2.0f;//ÉWÉÉÉìÉvÇÃçÇÇ≥
@@ -16,7 +18,7 @@ Player::Player(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/PikoC-Girl01.png");
 	assert(hImage > 0);
-	transform_.position_.x = 800.0f;
+	transform_.position_.x = 3000.0f;
 	transform_.position_.y = GROUND;
 	onground = true;
 }
@@ -163,6 +165,24 @@ void Player::Update()
 		if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
 		{
 			//ìñÇΩÇ¡ÇΩèàóù
+			KillMe();
+		}
+	}
+
+	std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
+	for (Bullet* pBullet : pBullets)
+	{
+		if (pBullet->ColliderCircle(transform_.position_.x + 63.0, transform_.position_.y, 63.0f))
+		{
+			KillMe();
+		}
+	}
+
+	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
+	for (thorn* pthorn : pThorns)
+	{
+		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, 64.0f))
+		{
 			KillMe();
 		}
 	}

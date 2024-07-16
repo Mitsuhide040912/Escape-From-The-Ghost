@@ -143,7 +143,6 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="thorn.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
@@ -161,7 +160,6 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="TestScene.h" />
     <ClInclude Include="thorn.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>

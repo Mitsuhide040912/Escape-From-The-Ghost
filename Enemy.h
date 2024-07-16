@@ -16,7 +16,7 @@ public:
 private:
 	int hImage;
 	float sinAngle;
-	
+	float sinValue;
 	double vx;//
 };
 

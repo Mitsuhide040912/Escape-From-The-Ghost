@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include "thorn.h"
 Field::Field(GameObject* parent)
 	:GameObject(parent)
 {
@@ -90,28 +91,38 @@ void Field::Reset()
 	}*/
 
 	for (int h = 0; h < height; h++){
-		for (int w = 0; w < width; w++){
-			switch (csv.GetInt(w,h/*+height+1*/))
+		for (int w = 0; w < width; w++) {
+			switch (csv.GetInt(w, h/*+height+1*/))
 			{
-			case 0:
-			{
+			 case 0:
+			 {
 				Player* pPlayer = GetParent()->FindGameObject<Player>();
 				pPlayer->SetPosition(w * 32, h * 32);
 				break;
-			}
-			case 1:
-			{
+			 }
+			 case 1:
+			 {
 				Enemy* pEnemy = Instantiate<Enemy>(GetParent());
 				pEnemy->SetPosition(w * 32, h * 32);
-			}
-			case 2:
-			{
+				break;
+			 }
+			 case 2:
+			 {
 				Bullet* pBullet = Instantiate<Bullet>(GetParent());
 				pBullet->SetPosition(w * 32, h * 32);
-			}
 				break;
+			 }
+			 case 3:
+			 {
+				 thorn* pThorn = Instantiate<thorn>(GetParent());
+				 pThorn->SetPosition(w * 32, h * 32);
+				 break;
+			 }
+			 default:
+				 break;
 			}
-			Map[h * width + w] = csv.GetInt(w, h);
+			
+				Map[h * width + w] = csv.GetInt(w, h);
 		}
 	}
 }
