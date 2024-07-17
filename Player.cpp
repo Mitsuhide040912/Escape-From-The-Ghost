@@ -20,7 +20,7 @@ Player::Player(GameObject* scene)
 	assert(hImage > 0);
 	transform_.position_.x = 3000.0f;
 	transform_.position_.y = GROUND;
-	onground = true;
+	//onground = true;
 }
 
 Player::~Player()
@@ -71,18 +71,25 @@ void Player::Update()
 	//↓プレイヤーが強制スクロールについていくための処理
 	//transform_.position_.x += MOVE_SPEED;
 
-
-	if (CheckHitKey(KEY_INPUT_SPACE)) {
-		if (playSpaceKey == false) {
-			//if (onground){
+	int Jump_Counter = 0;
+	bool canjump = true;
+	bool onground = true;
+	if (CheckHitKey(KEY_INPUT_SPACE)) 
+	{
+		if (canjump && onground)
+		{
 			JUMP_SPEED = -sqrtf(2 * GRUVITY * JUMP_HEIGHT);
 			onground = false;
-			//}
+			Jump_Counter++;
+			if (Jump_Counter >= 2)
+			{
+				canjump = false;
+			}
 		}
-		playSpaceKey = true;
 	}
-	else {
-		playSpaceKey = false;
+	else 
+	{
+		canjump = true;
 	}
 	JUMP_SPEED += GRUVITY;//速度 + 加速度
 	transform_.position_.y += JUMP_SPEED;

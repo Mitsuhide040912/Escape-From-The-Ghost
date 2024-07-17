@@ -3,8 +3,10 @@
 class Player :
     public GameObject
 {
+private:
+   
     int hImage;
-    bool onground;
+    
     bool playSpaceKey;
     float JUMP_SPEED;
     int animType;
