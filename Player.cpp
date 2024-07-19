@@ -6,12 +6,13 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "thorn.h"
+#include "Engine//SceneManager.h"
 namespace
 {
 	float MOVE_SPEED = 2.5f;
 	float GRUVITY = 9.0f / 60.0f; //重力
 	float GROUND = 300.0f;
-	float JUMP_HEIGHT = 50.0f * 2.0f;//ジャンプの高さ
+	float JUMP_HEIGHT = 60.0f * 2.0f;//ジャンプの高さ
 
 }
 Player::Player(GameObject* scene)
@@ -20,7 +21,8 @@ Player::Player(GameObject* scene)
 	assert(hImage > 0);
 	transform_.position_.x = 3000.0f;
 	transform_.position_.y = GROUND;
-	//onground = true;
+	//canjump = false;
+	onground = true;
 }
 
 Player::~Player()
@@ -70,27 +72,55 @@ void Player::Update()
 
 	//↓プレイヤーが強制スクロールについていくための処理
 	//transform_.position_.x += MOVE_SPEED;
-
-	int Jump_Counter = 0;
-	bool canjump = true;
-	bool onground = true;
-	if (CheckHitKey(KEY_INPUT_SPACE)) 
+	
+   /* canjump = true;*/
+	
+	//if (CheckHitKey(KEY_INPUT_SPACE)) 
+	//{
+	//	if (playSpaceKey == false)
+	//	{
+	//		if (onground)
+	//		{
+	//			JUMP_SPEED = -sqrtf(2 * GRUVITY * JUMP_HEIGHT);
+	//			onground = false;
+	//			//canjump = true;
+	//			
+	//			//if (Jump_Counter > 4)
+	//			//{
+	//			//	//Jump_Counter = 3;
+	//			//	Jump_Counter++; 
+	//			//	
+	//			//}
+	//		}
+	//	}
+	//	playSpaceKey = true;
+	//}
+	//else 
+	//{
+	//	playSpaceKey =false;
+	//	//canjump = true;
+	//	//onground = true;
+	//}
+	
+	onground = true;
+	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
-		if (canjump && onground)
+		if (playSpaceKey == false)//スペースキーを連続させない用
 		{
-			JUMP_SPEED = -sqrtf(2 * GRUVITY * JUMP_HEIGHT);
-			onground = false;
-			Jump_Counter++;
-			if (Jump_Counter >= 2)
+			if (onground)
 			{
-				canjump = false;
+				JUMP_SPEED = -sqrtf(2 * GRUVITY * JUMP_HEIGHT);
+				onground = false;
 			}
 		}
+		playSpaceKey = true;
 	}
-	else 
+	else
 	{
-		canjump = true;
+		playSpaceKey = false;
 	}
+
+
 	JUMP_SPEED += GRUVITY;//速度 + 加速度
 	transform_.position_.y += JUMP_SPEED;
 	//↓岩にぶつかる（右横）
@@ -127,8 +157,8 @@ void Player::Update()
 		int pushR = pField->CollisionDown(transform_.position_.x + 50, transform_.position_.y + 85);
 		int pushL = pField->CollisionDown(transform_.position_.x + 25, transform_.position_.y + 85);
 		int push = max(pushR, pushL);
-		if (push > 0) {
-			transform_.position_.y -= push;
+		if (push >= 1) {
+			transform_.position_.y -= push-1;
 			JUMP_SPEED = 0.0f;
 			onground = true;
 		}
@@ -172,8 +202,12 @@ void Player::Update()
 		if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
 		{
 			//当たった処理
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
+
 		}
+		
 	}
 
 	std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
@@ -181,8 +215,12 @@ void Player::Update()
 	{
 		if (pBullet->ColliderCircle(transform_.position_.x + 63.0, transform_.position_.y, 63.0f))
 		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
+			
 		}
+		
 	}
 
 	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
@@ -190,9 +228,13 @@ void Player::Update()
 	{
 		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, 64.0f))
 		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
+		
 	}
+	
 }
 
 void Player::Draw()
@@ -200,6 +242,10 @@ void Player::Draw()
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
 	//DrawRectGraph(x, y, animFrame * 60, 90, 62, 106, hImage, TRUE);
+	DrawFormatString(0, 20, GetColor(255, 255, 255), "ジャンプの値:%d", Jump_Counter);
+	DrawFormatString(0, 40, GetColor(255, 255, 255), "ジャンプしてる？:%d", onground);
+	//DrawFormatString(0, 60, GetColor(255, 255, 255), "空中でジャンプできる?:%d", canjump);
+	DrawFormatString(0, 80, GetColor(255, 255, 255), "スペース押してる？:%d", playSpaceKey);
 	Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr)
 	{
@@ -208,6 +254,8 @@ void Player::Draw()
 
 	DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 }
+
+
 
 void Player::SetPosition(int x, int y)
 {

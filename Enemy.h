@@ -18,6 +18,8 @@ private:
 	float sinAngle;
 	float sinValue;
 	double vx;//
+	int timer_;
+	int interval = 3000;
 };
 
 

@@ -1,8 +1,9 @@
 #include "Enemy.h"
-//#include "Bird.h"
 #include <assert.h>
 #include "Camera.h"
 #include "Player.h"
+#include "Bullet.h"
+#include "FireBall.h"
 Enemy::Enemy(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/henkouEnemy4.png");
@@ -26,7 +27,17 @@ void Enemy::Update()
 	transform_.position_.x += 1.8f;
 	sinAngle += 3.0f;//“x
     sinValue = sinf(sinAngle * DX_PI_F / 180.0f);
-	//transform_.position_.y = 500.0f + sinValue * 10.0f;
+	transform_.position_.y = 300.0f + sinValue * 10.0f;
+	if (timer_ <= 0)
+	{
+		FireBall* fb = Instantiate<FireBall>(GetParent());
+		fb->SetPosition(transform_.position_.x, transform_.position_.y);
+		timer_ = 180;
+	}
+	if (timer_ > 0)
+	{
+		timer_--;
+	}
 	//if (x > SCREEN_WIDTH)
 		return;
 	/*x += static_cast<int>(vx);

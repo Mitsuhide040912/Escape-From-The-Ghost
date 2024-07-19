@@ -41,7 +41,6 @@
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="CoolTimer.cpp" />
     <ClCompile Include="Engine\CsvReader.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
@@ -63,6 +62,10 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -82,7 +85,6 @@
     </ClInclude>
     <ClInclude Include="Field.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CoolTimer.h" />
     <ClInclude Include="Engine\CsvReader.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
@@ -104,5 +106,9 @@
     <ClInclude Include="TitleScene.h">
       <Filter>GameScene</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h" />
   </ItemGroup>
 </Project>

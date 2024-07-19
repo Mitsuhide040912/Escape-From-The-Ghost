@@ -1,7 +1,7 @@
 #include "Bullet.h"
-#include "CoolTimer.h"
 #include "Camera.h"
 #include "thorn.h"
+#include "Player.h"
 #include <assert.h>
 Bullet::Bullet(GameObject* scene)
 {
@@ -9,6 +9,7 @@ Bullet::Bullet(GameObject* scene)
 	assert(hImage > 0);
 	transform_.position_.x = 0;
 	transform_.position_.y = 0;
+	
 }
 
 Bullet::~Bullet()
@@ -23,7 +24,7 @@ void Bullet::Update()
 {
 	static int x = (int)transform_.position_.x;
 	static int y = (int)transform_.position_.y;
-	transform_.position_.x += 3.0f;
+	transform_.position_.x += 3.5f;
 	sinAngle += 3.0f;
 	sinValue = sinf(sinAngle * DX_PI_F / 180.0f);
 	//transform_.position_.x = x + sinValue * 40.0f;
@@ -38,6 +39,16 @@ void Bullet::Update()
 			KillMe();
 		}
 	}
+
+	/*while (ProcessMessage()==0)
+	{
+		int bullet_speed = 3.5f;
+		int dx = transform_.position_.x;
+		int dy = transform_.position_.y;
+		double angle = atan2(dx, dy);
+		int bulletX = enemyX + static_cast<int>(cos(angle) * bullet_speed);
+		int bulletY = enemyY + static_cast<int>(sin(angle) * bullet_speed);
+	}*/
 }
 
 void Bullet::Draw()

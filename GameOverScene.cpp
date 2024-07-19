@@ -1,27 +1,27 @@
-#include "TitleScene.h"
+#include "GameOverScene.h"
 #include "Engine/SceneManager.h"
 #include <assert.h>
-TitleScene::TitleScene(GameObject* parent)
-	:GameObject(parent,"TitleScene")
+GameOverScene::GameOverScene(GameObject* parent)
+	:GameObject(parent,"GameOverScene")
 {
-	hImage = LoadGraph("Assets/TitleScene.png");
+	hImage = LoadGraph("Assets/GameOverScene.png");
 	assert(hImage > 0);
 }
 
-void TitleScene::Initialize()
+void GameOverScene::Initialize()
 {
 }
 
-void TitleScene::Update()
+void GameOverScene::Update()
 {
-	if (CheckHitKey(KEY_INPUT_RETURN))
+	if (CheckHitKey(KEY_INPUT_R))
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_PLAY);
+		pSceneManager->ChangeScene(SCENE_ID_TITLE);
 	}
 }
 
-void TitleScene::Draw()
+void GameOverScene::Draw()
 {
 	int screenWidth, screenHeight;
 	GetScreenState(&screenWidth, &screenHeight, NULL);
@@ -30,8 +30,9 @@ void TitleScene::Draw()
 	int x = 0;
 	int y = 0;
 	DrawExtendGraph(x, y, screenWidth, screenHeight, hImage, TRUE);
+
 }
 
-void TitleScene::Release()
+void GameOverScene::Release()
 {
 }
