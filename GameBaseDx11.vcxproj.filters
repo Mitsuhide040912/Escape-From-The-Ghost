@@ -66,6 +66,9 @@
       <Filter>GameScene</Filter>
     </ClCompile>
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="GameClear.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -110,5 +113,8 @@
       <Filter>GameScene</Filter>
     </ClInclude>
     <ClInclude Include="FireBall.h" />
+    <ClInclude Include="GameClear.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

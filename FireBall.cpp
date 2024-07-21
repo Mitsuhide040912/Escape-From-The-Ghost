@@ -5,8 +5,8 @@ FireBall::FireBall(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/FIREBall2.png");
 	assert(hImage > 0);
-	transform_.position_.x = 40;
-	transform_.position_.y = 100;
+	transform_.position_.x;
+	transform_.position_.y;
 }
 
 FireBall::~FireBall()
@@ -31,7 +31,8 @@ void FireBall::Draw()
 	{
 		x -= cam->GetValue();
 	}
-	DrawGraph(x, y, hImage, TRUE);
+	//DrawCircle(x+150 , y+130 , 15.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
+	DrawGraph(x + 125, y + 120, hImage, TRUE);
 }
 
 void FireBall::SetPosition(int x, int y)
@@ -42,13 +43,13 @@ void FireBall::SetPosition(int x, int y)
 
 bool FireBall::ColliderCircle(float x, float y, float r)
 {
-	float myCenterX = transform_.position_.x + 10.5;
-	float myCenterY = transform_.position_.y + 10.5;
+	float myCenterX = transform_.position_.x + 200;
+	float myCenterY = transform_.position_.y + 50;
 	float dx = myCenterX - x;
 	float dy = myCenterY - y;
 
 	float dSqrts = dx * dx + dy * dy;
-	float myR = 10.5f + r;
+	float myR = 13.0f + r;
 	float rSqrt = myR * myR;
 	if (dSqrts <= rSqrt)
 	{

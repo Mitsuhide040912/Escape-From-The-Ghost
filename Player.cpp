@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "thorn.h"
+#include "FireBall.h"
 #include "Engine//SceneManager.h"
 namespace
 {
@@ -226,13 +227,24 @@ void Player::Update()
 	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
 	for (thorn* pthorn : pThorns)
 	{
-		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, 64.0f))
+		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y,64.0f))
 		{
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
 		
+	}
+
+	std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
+	for (FireBall* pFireBall : pFireBalls)
+	{
+		if (pFireBall->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, +64))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+			KillMe();
+		}
 	}
 	
 }
