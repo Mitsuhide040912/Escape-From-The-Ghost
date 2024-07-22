@@ -49,6 +49,7 @@ bool FireBall::ColliderCircle(float x, float y, float r)
 	float dy = myCenterY - y;
 
 	float dSqrts = dx * dx + dy * dy;
+
 	float myR = 10.0f + r;
 	float rSqrt = myR * myR;
 	if (dSqrts <= rSqrt)
