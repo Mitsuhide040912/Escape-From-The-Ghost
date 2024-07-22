@@ -36,7 +36,7 @@ void thorn::Draw()
 	{
 		x -= cam->GetValue();
 	}
-	DrawCircle(x+64 , y+70 , 60.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
+	//DrawCircle(x+64 , y+70 , 60.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
 	DrawGraph(x, y, hImage, TRUE);
 }
 

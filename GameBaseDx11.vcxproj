@@ -132,6 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cannon.cpp" />
+    <ClCompile Include="Cannon2.cpp" />
+    <ClCompile Include="CannonBullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine\CsvReader.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
@@ -143,6 +146,7 @@
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="thorn.cpp" />
@@ -151,6 +155,9 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cannon.h" />
+    <ClInclude Include="Cannon2.h" />
+    <ClInclude Include="CannonBullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\CsvReader.h" />
     <ClInclude Include="Engine\GameObject.h" />
@@ -162,6 +169,7 @@
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="thorn.h" />

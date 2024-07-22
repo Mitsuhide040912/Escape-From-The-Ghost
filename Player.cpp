@@ -7,6 +7,7 @@
 #include "Bullet.h"
 #include "thorn.h"
 #include "FireBall.h"
+#include "Goal.h"
 #include "Engine//SceneManager.h"
 namespace
 {
@@ -197,21 +198,22 @@ void Player::Update()
 	}
 
 	//“–‚½‚è”»’èplayer.cpp
-	std::list<Enemy*> pEnemys = GetParent()->FindGameObjects<Enemy>();
-	for (Enemy* pEnemy : pEnemys)
-	{
-		if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
-		{
-			//“–‚½‚Á‚½ˆ—
-			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
-			KillMe();
 
-		}
-		
-	}
+	//std::list<Enemy*> pEnemys = GetParent()->FindGameObjects<Enemy>();
+	//for (Enemy* pEnemy : pEnemys)
+	//{
+	//	if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
+	//	{
+	//		//“–‚½‚Á‚½ˆ—
+	//		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+	//		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+	//		KillMe();
 
-	std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
+	//	}
+	//	
+	//}
+
+	/*std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
 	for (Bullet* pBullet : pBullets)
 	{
 		if (pBullet->ColliderCircle(transform_.position_.x + 63.0, transform_.position_.y, 63.0f))
@@ -222,9 +224,9 @@ void Player::Update()
 			
 		}
 		
-	}
+	}*/
 
-	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
+	/*std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
 	for (thorn* pthorn : pThorns)
 	{
 		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y,64.0f))
@@ -234,19 +236,29 @@ void Player::Update()
 			KillMe();
 		}
 		
-	}
+	}*/
 
-	std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
+	/*std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
 	for (FireBall* pFireBall : pFireBalls)
 	{
-		if (pFireBall->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, +64))
+		if (pFireBall->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, + 50))
 		{
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-	}
+	}*/
 	
+	/*std::list<Goal*>pGoals = GetParent()->FindGameObjects<Goal>();
+	for (Goal* pGoal : pGoals)
+	{
+		if (pGoal->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, +64))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
+			KillMe();
+		}
+	}*/
 }
 
 void Player::Draw()
@@ -263,6 +275,7 @@ void Player::Draw()
 	{
 		x -= cam->GetValue();
 	}
+
 
 	DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 }

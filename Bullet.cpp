@@ -4,6 +4,7 @@
 #include "Player.h"
 #include <assert.h>
 Bullet::Bullet(GameObject* scene)
+	:GameObject()
 {
 	hImage = LoadGraph("Assets/Kaoru.png");
 	assert(hImage > 0);

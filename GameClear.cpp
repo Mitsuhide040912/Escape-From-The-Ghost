@@ -13,7 +13,7 @@ void GameClear::Initialize()
 
 void GameClear::Update()
 {
-	if (CheckHitKey(KEY_INPUT_R))
+	if (CheckHitKey(KEY_INPUT_T))
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TITLE);

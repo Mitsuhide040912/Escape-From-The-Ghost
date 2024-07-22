@@ -2,14 +2,13 @@
 #include <assert.h>
 #include "Camera.h"
 #include "Player.h"
-#include "Bullet.h"
 #include "FireBall.h"
 Enemy::Enemy(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/henkouEnemy4.png");
 	assert(hImage > 0);
 	transform_.position_.x = 0;
-	transform_.position_.y = 300;
+	transform_.position_.y = 0;
 }
 
 Enemy::~Enemy()
@@ -32,13 +31,12 @@ void Enemy::Update()
 	{
 		FireBall* fb = Instantiate<FireBall>(GetParent());
 		fb->SetPosition(transform_.position_.x, transform_.position_.y);
-		timer_ = 180;
+		timer_ = 360;
 	}
 	if (timer_ > 0)
 	{
 		timer_--;
 	}
-	//if (x > SCREEN_WIDTH)
 		return;
 	/*x += static_cast<int>(vx);
 	Player* pPlayer = GetParent()->FindGameObject<Player>();

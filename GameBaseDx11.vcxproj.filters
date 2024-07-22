@@ -69,6 +69,10 @@
     <ClCompile Include="GameClear.cpp">
       <Filter>GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="Goal.cpp" />
+    <ClCompile Include="Cannon.cpp" />
+    <ClCompile Include="CannonBullet.cpp" />
+    <ClCompile Include="Cannon2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -116,5 +120,9 @@
     <ClInclude Include="GameClear.h">
       <Filter>GameScene</Filter>
     </ClInclude>
+    <ClInclude Include="Goal.h" />
+    <ClInclude Include="Cannon.h" />
+    <ClInclude Include="CannonBullet.h" />
+    <ClInclude Include="Cannon2.h" />
   </ItemGroup>
 </Project>

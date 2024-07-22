@@ -7,6 +7,9 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "thorn.h"
+#include "Goal.h"
+#include "Cannon.h"
+#include "Cannon2.h"
 Field::Field(GameObject* parent)
 	:GameObject(parent)
 {
@@ -118,6 +121,24 @@ void Field::Reset()
 				 pThorn->SetPosition(w * 32, h * 32);
 				 break;
 			 }
+			 case 4:
+			 {
+				 Goal* pGoal = Instantiate<Goal>(GetParent());
+				 pGoal->SetPosition(w * 32, h * 32);
+				 break;
+			 }
+			 case 5:
+			 {
+				 Cannon* pCannon = Instantiate<Cannon>(GetParent());
+				 pCannon->SetPosition(w * 32, h * 32);
+				 break;
+			 }
+			 case 6:
+			 {
+				 Cannon2* pCannon2 = Instantiate<Cannon2>(GetParent());
+				 pCannon2->SetPosition(w * 32, h * 32);
+				 break;
+			 }
 			 default:
 				 break;
 			}
@@ -133,19 +154,6 @@ int Field::CollisionRight(int x, int y)
 	{
 		return (x + 1) % 32 + 1;
 	}
-	/*int chipX = x / 32;
-	int chipY = y / 32;
-	switch (Map[chipY * width + chipX]) {
-	case 16:
-	case 17:
-	case 18:
-	case 19:
-	case 32:
-	case 33:
-	case 34:
-	case 35:
-		return true;
-	}*/
 	return 0;
 }
 

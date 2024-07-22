@@ -1,28 +1,28 @@
-#include "FireBall.h"
+#include "CannonBullet.h"
 #include "Camera.h"
 #include <assert.h>
-FireBall::FireBall(GameObject* scene)
+CannonBullet::CannonBullet(GameObject* scene)
 {
-	hImage = LoadGraph("Assets/FIREBall2.png");
+	hImage = LoadGraph("Assets/Gyorai.png");
 	assert(hImage > 0);
 	transform_.position_.x;
 	transform_.position_.y;
 }
 
-FireBall::~FireBall()
+CannonBullet::~CannonBullet()
 {
-	if (hImage > 0)
+	if (hImage > 0);
 	{
 		DeleteGraph(hImage);
 	}
 }
 
-void FireBall::Update()
+void CannonBullet::Update()
 {
-	transform_.position_.x += 3.0f;
+	transform_.position_.x -= 1.5f;
 }
 
-void FireBall::Draw()
+void CannonBullet::Draw()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
@@ -31,17 +31,16 @@ void FireBall::Draw()
 	{
 		x -= cam->GetValue();
 	}
-	//DrawCircle(x+150 , y+130 , 15.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
-	DrawGraph(x + 125, y + 120, hImage, TRUE);
+	DrawGraph(x, y, hImage, TRUE);
 }
 
-void FireBall::SetPosition(int x, int y)
+void CannonBullet::SetPosition(int x, int y)
 {
 	transform_.position_.x = x;
 	transform_.position_.y = y;
 }
 
-bool FireBall::ColliderCircle(float x, float y, float r)
+bool CannonBullet::ColliderCircle(float x, float y, float r)
 {
 	float myCenterX = transform_.position_.x + 200;
 	float myCenterY = transform_.position_.y + 60;
