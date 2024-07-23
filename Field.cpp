@@ -10,6 +10,7 @@
 #include "Goal.h"
 #include "Cannon.h"
 #include "Cannon2.h"
+#include "thorn2.h"
 Field::Field(GameObject* parent)
 	:GameObject(parent)
 {
@@ -139,6 +140,12 @@ void Field::Reset()
 				 pCannon2->SetPosition(w * 32, h * 32);
 				 break;
 			 }
+			 case 7:
+			 {
+				 thorn2* pthorn2 = Instantiate<thorn2>(GetParent());
+				 pthorn2->SetPosition(w * 32, h * 32);
+				 break;
+			 }
 			 default:
 				 break;
 			}
@@ -161,7 +168,8 @@ int Field::CollisionLeft(int x, int y)
 {
 	if (IsWallBlock(x - 1, y))
 	{
-		return 32 - (x % 32);
+		/*return 32 - (x % 32);*/
+		return(x + 1) % 32 + 1;
 	}
 	return 0;
 }

@@ -1,5 +1,6 @@
 #include "CannonBullet.h"
 #include "Camera.h"
+#include "ShineBullet.h"
 #include <assert.h>
 CannonBullet::CannonBullet(GameObject* scene)
 {
@@ -19,7 +20,16 @@ CannonBullet::~CannonBullet()
 
 void CannonBullet::Update()
 {
-	transform_.position_.x -= 1.5f;
+	transform_.position_.x -= 1.3f;
+	std::list<ShineBullet*>pShineBullets = GetParent()->FindGameObjects<ShineBullet>();
+	for (ShineBullet* pShineBullet : pShineBullets)
+	{
+		if (pShineBullet->ColliderCircle(transform_.position_.x + 64, transform_.position_.y, 60.0f))
+		{
+			//“–‚½‚Á‚½ˆ—
+			KillMe();
+		}
+	}
 }
 
 void CannonBullet::Draw()
@@ -31,6 +41,7 @@ void CannonBullet::Draw()
 	{
 		x -= cam->GetValue();
 	}
+	//DrawCircle(x + 50, y + 70, 50.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
 	DrawGraph(x, y, hImage, TRUE);
 }
 
@@ -42,13 +53,13 @@ void CannonBullet::SetPosition(int x, int y)
 
 bool CannonBullet::ColliderCircle(float x, float y, float r)
 {
-	float myCenterX = transform_.position_.x + 200;
-	float myCenterY = transform_.position_.y + 60;
+	float myCenterX = transform_.position_.x + 100;
+	float myCenterY = transform_.position_.y + 50;
 	float dx = myCenterX - x;
 	float dy = myCenterY - y;
 
 	float dSqrts = dx * dx + dy * dy;
-	float myR = 10.0f + r;
+	float myR = 30.0f + r;
 	float rSqrt = myR * myR;
 	if (dSqrts <= rSqrt)
 	{

@@ -19,7 +19,7 @@ FireBall::~FireBall()
 
 void FireBall::Update()
 {
-	transform_.position_.x += 3.0f;
+	transform_.position_.x += 5.5f;
 }
 
 void FireBall::Draw()
@@ -43,7 +43,7 @@ void FireBall::SetPosition(int x, int y)
 
 bool FireBall::ColliderCircle(float x, float y, float r)
 {
-	float myCenterX = transform_.position_.x + 200;
+	float myCenterX = transform_.position_.x + 160;
 	float myCenterY = transform_.position_.y + 60;
 	float dx = myCenterX - x;
 	float dy = myCenterY - y;

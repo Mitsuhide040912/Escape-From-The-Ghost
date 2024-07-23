@@ -23,15 +23,15 @@ void Enemy::Update()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
-	transform_.position_.x += 1.8f;
+	transform_.position_.x += 0.6f;
 	sinAngle += 3.0f;//“x
     sinValue = sinf(sinAngle * DX_PI_F / 180.0f);
-	transform_.position_.y = 300.0f + sinValue * 10.0f;
+	transform_.position_.y = 230.0f + sinValue * 10.0f;
 	if (timer_ <= 0)
 	{
 		FireBall* fb = Instantiate<FireBall>(GetParent());
 		fb->SetPosition(transform_.position_.x, transform_.position_.y);
-		timer_ = 360;
+		timer_ = 720;
 	}
 	if (timer_ > 0)
 	{

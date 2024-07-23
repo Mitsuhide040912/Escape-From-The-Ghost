@@ -70,9 +70,17 @@
       <Filter>GameScene</Filter>
     </ClCompile>
     <ClCompile Include="Goal.cpp" />
-    <ClCompile Include="Cannon.cpp" />
-    <ClCompile Include="CannonBullet.cpp" />
-    <ClCompile Include="Cannon2.cpp" />
+    <ClCompile Include="thorn2.cpp" />
+    <ClCompile Include="Cannon.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Cannon2.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonBullet.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ShineBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -121,8 +129,16 @@
       <Filter>GameScene</Filter>
     </ClInclude>
     <ClInclude Include="Goal.h" />
-    <ClInclude Include="Cannon.h" />
-    <ClInclude Include="CannonBullet.h" />
-    <ClInclude Include="Cannon2.h" />
+    <ClInclude Include="thorn2.h" />
+    <ClInclude Include="Cannon.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon2.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonBullet.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ShineBullet.h" />
   </ItemGroup>
 </Project>

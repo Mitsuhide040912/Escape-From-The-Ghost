@@ -6,7 +6,7 @@
 Bullet::Bullet(GameObject* scene)
 	:GameObject()
 {
-	hImage = LoadGraph("Assets/Kaoru.png");
+	hImage = LoadGraph("Assets/kaoru.png");
 	assert(hImage > 0);
 	transform_.position_.x = 0;
 	transform_.position_.y = 0;
@@ -31,15 +31,15 @@ void Bullet::Update()
 	//transform_.position_.x = x + sinValue * 40.0f;
 	//transform_.position_.y = y + sinValue * 40.0f;
 	//«ƒhƒbƒXƒ“‚É“–‚½‚Á‚½
-	std::list<thorn*>pthorns = GetParent()->FindGameObjects<thorn>();
-	for (thorn* pthorn : pthorns)
-	{
-		if (pthorn->ColliderCircle(transform_.position_.x + 64, transform_.position_.y, 100.0f))
-		{
-			//“–‚½‚Á‚½ˆ—
-			KillMe();
-		}
-	}
+	//std::list<thorn*>pthorns = GetParent()->FindGameObjects<thorn>();
+	//for (thorn* pthorn : pthorns)
+	//{
+	//	if (pthorn->ColliderCircle(transform_.position_.x + 64, transform_.position_.y, 100.0f))
+	//	{
+	//		//“–‚½‚Á‚½ˆ—
+	//		KillMe();
+	//	}
+	//}
 
 	/*while (ProcessMessage()==0)
 	{

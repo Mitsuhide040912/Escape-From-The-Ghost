@@ -1,15 +1,15 @@
-#include "thorn.h"
+#include "thorn2.h"
 #include "Camera.h"
 #include <assert.h>
-thorn::thorn(GameObject* parent)
+thorn2::thorn2(GameObject* parent)
 {
-	hImage = LoadGraph("Assets/Dossun.png");
+	hImage = LoadGraph("Assets/Dossun2.png");
 	assert(hImage > 0);
 	transform_.position_.x;
 	transform_.position_.y;
 }
 
-thorn::~thorn()
+thorn2::~thorn2()
 {
 	if (hImage > 0)
 	{
@@ -17,17 +17,13 @@ thorn::~thorn()
 	}
 }
 
-void thorn::Update()
+void thorn2::Update()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
-	//transform_.position_.y -= 0.1f;
-	sinAngle += 2.0f;
-	sinValue = sinf(sinAngle * DX_PI_F / 360.0f);
-	transform_.position_.y = 300.0f + sinValue * 100.0f;
 }
 
-void thorn::Draw()
+void thorn2::Draw()
 {
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
@@ -36,25 +32,25 @@ void thorn::Draw()
 	{
 		x -= cam->GetValue();
 	}
-	//DrawCircle(x+64 , y+70 , 60.0f, GetColor(255, 0, 0));//“–‚½‚è”»’è
 	DrawGraph(x, y, hImage, TRUE);
 }
 
-void thorn::SetPosition(int x, int y)
+void thorn2::SetPosition(int x, int y)
 {
 	transform_.position_.x = x;
 	transform_.position_.y = y;
 }
 
-bool thorn::ColliderCircle(float x, float y, float r)
+bool thorn2::ColliderCircle(float x, float y, float r)
 {
-	float myCenterX = transform_.position_.x + 88.0;
-	float myCenterY = transform_.position_.y + 32.0;
+
+	float myCenterX = transform_.position_.x + 50.0;
+	float myCenterY = transform_.position_.y + 5.0;
 	float dx = myCenterX - x;
 	float dy = myCenterY - y;
 
 	float dSqrts = dx * dx + dy * dy;
-	float myR = 50.0f + r;
+	float myR = 10.0f + r;
 	float rSqrt = myR * myR;
 	if (dSqrts <= rSqrt)
 	{

@@ -6,22 +6,26 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "thorn.h"
+#include "thorn2.h"
 #include "FireBall.h"
 #include "Goal.h"
+#include "Cannon.h"
+#include "CannonBullet.h"
+#include "ShineBullet.h"
 #include "Engine//SceneManager.h"
 namespace
 {
-	float MOVE_SPEED = 2.5f;
-	float GRUVITY = 9.0f / 60.0f; //重力
-	float GROUND = 300.0f;
+	float MOVE_SPEED = 1.5f;
+	float GRUVITY = 2.0f / 100.0f; //重力
+	float GROUND = 265.0f;
 	float JUMP_HEIGHT = 60.0f * 2.0f;//ジャンプの高さ
 
 }
 Player::Player(GameObject* scene)
 {
-	hImage = LoadGraph("Assets/PikoC-Girl01.png");
+	hImage = LoadGraph("Assets/JetMan.png");
 	assert(hImage > 0);
-	transform_.position_.x = 3000.0f;
+	transform_.position_.x = 1600.0f;
 	transform_.position_.y = GROUND;
 	//canjump = false;
 	onground = true;
@@ -41,13 +45,19 @@ void Player::Update()
 	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
 		transform_.position_.x += MOVE_SPEED;
-		if (++FrameCounter >= 8) {
+		/*if (++FrameCounter >= 8) {
 			animFrame = (animFrame + 1) % 4;
 			FrameCounter = 0;
-		}
-		int hitX = transform_.position_.x + 50;
+		}*/
+		/*int hitX = transform_.position_.x + 50;
 		int hitY = transform_.position_.y + 60;
 		if (pField != nullptr){
+			int push = pField->CollisionRight(hitX, hitY);
+			transform_.position_.x -= push;
+		}*/
+		int hitX = transform_.position_.x + 100;
+		int hitY = transform_.position_.y + 60;
+		if (pField != nullptr) {
 			int push = pField->CollisionRight(hitX, hitY);
 			transform_.position_.x -= push;
 		}
@@ -55,13 +65,19 @@ void Player::Update()
 	else if (CheckHitKey(KEY_INPUT_LEFT))
 	{
 		transform_.position_.x -= MOVE_SPEED;
-		if (++FrameCounter >= 8) {
+		/*if (++FrameCounter >= 8) {
 			animFrame = (animFrame + 1) % 4;
 			FrameCounter = 0;
-		}
-		int hitX = transform_.position_.x + 25;
-		int hitY = transform_.position_.y + 40;
+		}*/
+		/*int hitX = transform_.position_.x + 25;
+		int hitY = transform_.position_.y + 50;
 		if (pField != nullptr){
+			int push = pField->CollisionLeft(hitX, hitY);
+			transform_.position_.x += push;
+		}*/
+		int hitX = transform_.position_.x + 25;
+		int hitY = transform_.position_.y + 50;
+		if (pField != nullptr) {
 			int push = pField->CollisionLeft(hitX, hitY);
 			transform_.position_.x += push;
 		}
@@ -73,36 +89,13 @@ void Player::Update()
 	}
 
 	//↓プレイヤーが強制スクロールについていくための処理
-	//transform_.position_.x += MOVE_SPEED;
-	
-   /* canjump = true;*/
-	
-	//if (CheckHitKey(KEY_INPUT_SPACE)) 
-	//{
-	//	if (playSpaceKey == false)
-	//	{
-	//		if (onground)
-	//		{
-	//			JUMP_SPEED = -sqrtf(2 * GRUVITY * JUMP_HEIGHT);
-	//			onground = false;
-	//			//canjump = true;
-	//			
-	//			//if (Jump_Counter > 4)
-	//			//{
-	//			//	//Jump_Counter = 3;
-	//			//	Jump_Counter++; 
-	//			//	
-	//			//}
-	//		}
-	//	}
-	//	playSpaceKey = true;
-	//}
-	//else 
-	//{
-	//	playSpaceKey =false;
-	//	//canjump = true;
-	//	//onground = true;
-	//}
+	int hitX = transform_.position_.x + 55;
+	int hitY = transform_.position_.y + 60;
+	if (pField != nullptr) {
+		int push = pField->CollisionRight(hitX, hitY);
+		transform_.position_.x -= push;
+	}
+	transform_.position_.x += MOVE_SPEED;
 	
 	onground = true;
 	if (CheckHitKey(KEY_INPUT_SPACE))
@@ -121,8 +114,19 @@ void Player::Update()
 	{
 		playSpaceKey = false;
 	}
-
-
+	if (timer_ <= 0)
+	{
+		if (CheckHitKey(KEY_INPUT_B))
+		{
+			ShineBullet* SB = Instantiate<ShineBullet>(GetParent());
+			SB->SetPosition(transform_.position_.x, transform_.position_.y);
+			timer_ = 60;
+		}
+	}
+	if (timer_ > 0)
+	{
+		timer_--;
+	}
 	JUMP_SPEED += GRUVITY;//速度 + 加速度
 	transform_.position_.y += JUMP_SPEED;
 	//↓岩にぶつかる（右横）
@@ -213,7 +217,7 @@ void Player::Update()
 	//	
 	//}
 
-	/*std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
+	std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
 	for (Bullet* pBullet : pBullets)
 	{
 		if (pBullet->ColliderCircle(transform_.position_.x + 63.0, transform_.position_.y, 63.0f))
@@ -224,21 +228,21 @@ void Player::Update()
 			
 		}
 		
-	}*/
+	}
 
-	/*std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
+	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
 	for (thorn* pthorn : pThorns)
 	{
-		if (pthorn->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y,64.0f))
+		if (pthorn->ColliderCircle(transform_.position_.x + 50, transform_.position_.y,50))
 		{
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
 		
-	}*/
+	}
 
-	/*std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
+	std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
 	for (FireBall* pFireBall : pFireBalls)
 	{
 		if (pFireBall->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, + 50))
@@ -247,18 +251,40 @@ void Player::Update()
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-	}*/
+	}
 	
-	/*std::list<Goal*>pGoals = GetParent()->FindGameObjects<Goal>();
+	std::list<Goal*>pGoals = GetParent()->FindGameObjects<Goal>();
 	for (Goal* pGoal : pGoals)
 	{
-		if (pGoal->ColliderCircle(transform_.position_.x + 64.0, transform_.position_.y, +64))
+		if (pGoal->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, +50))
 		{
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
 			KillMe();
 		}
-	}*/
+	}
+
+	std::list<CannonBullet*>pCB = GetParent()->FindGameObjects<CannonBullet>();
+	for (CannonBullet* pCannonBullet : pCB)
+	{
+		if (pCannonBullet->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+			KillMe();
+		}
+	}
+
+	std::list<thorn2*>pt2 = GetParent()->FindGameObjects<thorn2>();
+	for (thorn2* pthorn2 : pt2)
+	{
+		if (pthorn2->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+			KillMe();
+		}
+	}
 }
 
 void Player::Draw()
@@ -266,18 +292,17 @@ void Player::Draw()
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
 	//DrawRectGraph(x, y, animFrame * 60, 90, 62, 106, hImage, TRUE);
-	DrawFormatString(0, 20, GetColor(255, 255, 255), "ジャンプの値:%d", Jump_Counter);
-	DrawFormatString(0, 40, GetColor(255, 255, 255), "ジャンプしてる？:%d", onground);
-	//DrawFormatString(0, 60, GetColor(255, 255, 255), "空中でジャンプできる?:%d", canjump);
-	DrawFormatString(0, 80, GetColor(255, 255, 255), "スペース押してる？:%d", playSpaceKey);
+	DrawFormatString(50, 90, GetColor(255, 255, 255), "ジャンプ SpaceKey:%d", TRUE);
+	DrawFormatString(50, 120, GetColor(255, 255, 255), "左右移動 ← →:%d", TRUE);
+	DrawFormatString(50, 150, GetColor(255, 255, 255), "ジャンプ + 左右移動 SpaceKey + ← →:%d", TRUE);
 	Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr)
 	{
 		x -= cam->GetValue();
 	}
 
-
-	DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
+	DrawGraph(x, y, hImage, TRUE);
+	//DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 }
 
 

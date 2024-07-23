@@ -149,7 +149,9 @@
     <ClCompile Include="Goal.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="ShineBullet.cpp" />
     <ClCompile Include="thorn.cpp" />
+    <ClCompile Include="thorn2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +174,9 @@
     <ClInclude Include="Goal.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="ShineBullet.h" />
     <ClInclude Include="thorn.h" />
+    <ClInclude Include="thorn2.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

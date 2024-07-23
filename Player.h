@@ -9,7 +9,7 @@ private:
    // bool canjump;
     bool onground;
 
-
+    int timer_;
     float JUMP_SPEED;
     int Jump_Counter = 0;
     int animType;
