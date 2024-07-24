@@ -20,5 +20,6 @@ public:
 private:
 	int hImage;
 	int hTitleScene;
+	int sound;
 };
 

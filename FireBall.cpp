@@ -19,7 +19,7 @@ FireBall::~FireBall()
 
 void FireBall::Update()
 {
-	transform_.position_.x += 5.5f;
+	transform_.position_.x += 3.5f;
 }
 
 void FireBall::Draw()

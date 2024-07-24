@@ -34,5 +34,5 @@ public:
 private:
 	SCENE_ID currentSceneID_;	//現在のシーン
 	SCENE_ID nextSceneID_;		//次のシーン
-
+	int sound;
 };

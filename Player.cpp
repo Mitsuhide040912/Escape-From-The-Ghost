@@ -17,7 +17,7 @@ namespace
 {
 	float MOVE_SPEED = 1.5f;
 	float GRUVITY = 2.0f / 100.0f; //重力
-	float GROUND = 265.0f;
+	float GROUND = 300.0f;
 	float JUMP_HEIGHT = 60.0f * 2.0f;//ジャンプの高さ
 
 }
@@ -25,7 +25,7 @@ Player::Player(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/JetMan.png");
 	assert(hImage > 0);
-	transform_.position_.x = 1600.0f;
+	transform_.position_.x = 500.0f;
 	transform_.position_.y = GROUND;
 	//canjump = false;
 	onground = true;
@@ -118,9 +118,13 @@ void Player::Update()
 	{
 		if (CheckHitKey(KEY_INPUT_B))
 		{
+			sound1 = LoadSoundMem("Assets/Electric_Shock06-1(Short).mp3");
+			assert(sound1 != -1);
+			PlaySoundMem(sound1, DX_PLAYTYPE_BACK); // 音声を再生
 			ShineBullet* SB = Instantiate<ShineBullet>(GetParent());
 			SB->SetPosition(transform_.position_.x, transform_.position_.y);
-			timer_ = 60;
+			timer_ = 120;
+			
 		}
 	}
 	if (timer_ > 0)
@@ -203,21 +207,21 @@ void Player::Update()
 
 	//当たり判定player.cpp
 
-	//std::list<Enemy*> pEnemys = GetParent()->FindGameObjects<Enemy>();
-	//for (Enemy* pEnemy : pEnemys)
-	//{
-	//	if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
-	//	{
-	//		//当たった処理
-	//		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-	//		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
-	//		KillMe();
+	std::list<Enemy*> pEnemys = GetParent()->FindGameObjects<Enemy>();
+	for (Enemy* pEnemy : pEnemys)
+	{
+		if (pEnemy->CollideCircle(transform_.position_.x+64, transform_.position_.y, 100.0f))
+		{
+			//当たった処理
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+			KillMe();
 
-	//	}
-	//	
-	//}
+		}
+		
+	}
 
-	std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
+	/*std::list<Bullet*>pBullets = GetParent()->FindGameObjects<Bullet>();
 	for (Bullet* pBullet : pBullets)
 	{
 		if (pBullet->ColliderCircle(transform_.position_.x + 63.0, transform_.position_.y, 63.0f))
@@ -228,18 +232,24 @@ void Player::Update()
 			
 		}
 		
-	}
+	}*/
 
 	std::list<thorn*>pThorns = GetParent()->FindGameObjects<thorn>();
 	for (thorn* pthorn : pThorns)
 	{
 		if (pthorn->ColliderCircle(transform_.position_.x + 50, transform_.position_.y,50))
 		{
+			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			assert(sound3 != -1);
+			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // 音声を再生
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-		
+		/*else
+		{
+			DeleteSoundMem(sound3);
+		}*/
 	}
 
 	std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
@@ -247,10 +257,17 @@ void Player::Update()
 	{
 		if (pFireBall->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, + 50))
 		{
+			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			assert(sound3 != -1);
+			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // 音声を再生
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
+		/*else
+		{
+			DeleteSoundMem(sound3);
+		}*/
 	}
 	
 	std::list<Goal*>pGoals = GetParent()->FindGameObjects<Goal>();
@@ -258,10 +275,17 @@ void Player::Update()
 	{
 		if (pGoal->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, +50))
 		{
+			sound2 = LoadSoundMem("Assets/ooatari2.MP3");
+			assert(sound2 != -1);
+			PlaySoundMem(sound2, DX_PLAYTYPE_BACK); // 音声を再生
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
 			KillMe();
 		}
+		/*else
+		{
+			DeleteSoundMem(sound2);
+		}*/
 	}
 
 	std::list<CannonBullet*>pCB = GetParent()->FindGameObjects<CannonBullet>();
@@ -269,10 +293,17 @@ void Player::Update()
 	{
 		if (pCannonBullet->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
 		{
+			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			assert(sound3 != -1);
+			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // 音声を再生
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
+		/*else
+		{
+			DeleteSoundMem(sound3);
+		}*/
 	}
 
 	std::list<thorn2*>pt2 = GetParent()->FindGameObjects<thorn2>();
@@ -280,10 +311,17 @@ void Player::Update()
 	{
 		if (pthorn2->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
 		{
+			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			assert(sound3 != -1);
+			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // 音声を再生
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
+		/*else
+		{
+			DeleteSoundMem(sound3);
+		}*/
 	}
 }
 
@@ -293,14 +331,15 @@ void Player::Draw()
 	int y = (int)transform_.position_.y;
 	//DrawRectGraph(x, y, animFrame * 60, 90, 62, 106, hImage, TRUE);
 	DrawFormatString(50, 90, GetColor(255, 255, 255), "ジャンプ SpaceKey:%d", TRUE);
-	DrawFormatString(50, 120, GetColor(255, 255, 255), "左右移動 ← →:%d", TRUE);
-	DrawFormatString(50, 150, GetColor(255, 255, 255), "ジャンプ + 左右移動 SpaceKey + ← →:%d", TRUE);
+	DrawFormatString(50, 120, GetColor(255, 255, 255), "ダッシュ  →:%d", TRUE);
+	DrawFormatString(50, 150, GetColor(255, 255, 255), "停止  ←:%d", TRUE);
+	DrawFormatString(50, 180, GetColor(255, 255, 255), "ショット B:%d", TRUE);
 	Camera* cam = GetParent()->FindGameObject<Camera>();
 	if (cam != nullptr)
 	{
 		x -= cam->GetValue();
 	}
-
+	
 	DrawGraph(x, y, hImage, TRUE);
 	//DrawRectGraph(x, y, animFrame * 60, 190, 62, 106, hImage, TRUE);
 }

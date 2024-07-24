@@ -17,6 +17,10 @@ void SceneManager::Initialize()
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
 	Instantiate<TitleScene>(this);
+	//sound = LoadSoundMem("Assets/GB-Action-D10-1(Clear).MP3");
+	//assert(sound != -1);
+	//PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ğÄ¶
+
 }
 
 //XV

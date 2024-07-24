@@ -3,6 +3,7 @@
 class PlayScene :
 	public GameObject
 {
+	int sound;
 public:
 	PlayScene(GameObject* parent);
 

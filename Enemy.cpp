@@ -7,7 +7,7 @@ Enemy::Enemy(GameObject* scene)
 {
 	hImage = LoadGraph("Assets/henkouEnemy4.png");
 	assert(hImage > 0);
-	transform_.position_.x = 0;
+	transform_.position_.x = -3000;
 	transform_.position_.y = 0;
 }
 

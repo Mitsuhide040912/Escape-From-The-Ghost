@@ -13,12 +13,6 @@ public:
 	bool ColliderCircle(float x, float y, float r);
 private:
 	int hImage;
-	float sinAngle;
-	float sinValue;
-	double vx;
-	int playerX;
-	int playerY;
-	int enemyX;
-	int enemyY;
+	int timer_;
 };
 

@@ -9,6 +9,9 @@ private:
    // bool canjump;
     bool onground;
 
+    int sound1;
+    int sound2;
+    int sound3;
     int timer_;
     float JUMP_SPEED;
     int Jump_Counter = 0;

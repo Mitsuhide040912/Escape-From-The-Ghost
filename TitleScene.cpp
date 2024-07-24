@@ -16,6 +16,9 @@ void TitleScene::Update()
 {
 	if (CheckHitKey(KEY_INPUT_RETURN))
 	{
+		sound = LoadSoundMem("Assets/GB-Action-C06-1(Stage5).MP3");
+		assert(sound != -1);
+		PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_PLAY);
 	}
