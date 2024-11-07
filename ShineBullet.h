@@ -13,6 +13,6 @@ public:
 	bool ColliderCircle(float x, float y, float r);
 private:
 	int hImage;
-	int timer_;
+	float timer_;
 };
 

@@ -25,8 +25,8 @@ void PlayScene::Initialize()
 
 void PlayScene::Update()
 {
-	//InitSoundMem();
-	//DeleteSoundMem(sound);
+	InitSoundMem();
+	DeleteSoundMem(sound);
 }
 
 void PlayScene::Draw()

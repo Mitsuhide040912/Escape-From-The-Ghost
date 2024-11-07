@@ -10,7 +10,7 @@ ShineBullet::ShineBullet(GameObject* scene)
 	assert(hImage > 0);
 	transform_.position_.x = 0;
 	transform_.position_.y = 0;
-
+	timer_ = 5.5f;
 }
 
 ShineBullet::~ShineBullet()
@@ -26,7 +26,11 @@ void ShineBullet::Update()
 	static int x = (int)transform_.position_.x;
 	static int y = (int)transform_.position_.y;
 	transform_.position_.x += 3.5f;
-	
+	timer_ -= 1 / 120.0f;
+	if (timer_ <= 0)
+	{
+		KillMe();
+	}
 	//std::list<CannonBullet*>pCBs = GetParent()->FindGameObjects<CannonBullet>();
 	//for (CannonBullet* pCB : pCBs)
 	//{
