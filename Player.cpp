@@ -15,7 +15,7 @@
 #include "Engine//SceneManager.h"
 namespace
 {
-	float MOVE_SPEED = 1.5f;
+	float MOVE_SPEED = 3.5f;
 	float GRUVITY = 2.0f / 100.0f; //d—Í
 	float GROUND = 300.0f;
 	float JUMP_HEIGHT = 60.0f * 2.0f;//ƒWƒƒƒ“ƒv‚Ì‚‚³
@@ -123,7 +123,7 @@ void Player::Update()
 			PlaySoundMem(sound1, DX_PLAYTYPE_BACK); // ‰¹º‚ğÄ¶
 			ShineBullet* SB = Instantiate<ShineBullet>(GetParent());
 			SB->SetPosition(transform_.position_.x, transform_.position_.y);
-			timer_ = 120;
+			timer_ = 60;
 			
 		}
 	}
