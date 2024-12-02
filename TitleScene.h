@@ -21,5 +21,6 @@ private:
 	int hImage;
 	int hTitleScene;
 	int sound;
+	int SHandle;
 };
 

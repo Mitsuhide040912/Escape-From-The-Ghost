@@ -121,6 +121,7 @@ void Player::Update()
 			sound1 = LoadSoundMem("Assets/Electric_Shock06-1(Short).mp3");
 			assert(sound1 != -1);
 			PlaySoundMem(sound1, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//PlaySoundFile("Assets/Electric_Shock06-1(Short).mp3", DX_PLAYTYPE_BACK);
 			ShineBullet* SB = Instantiate<ShineBullet>(GetParent());
 			SB->SetPosition(transform_.position_.x, transform_.position_.y);
 			timer_ = 60;
@@ -239,17 +240,18 @@ void Player::Update()
 	{
 		if (pthorn->ColliderCircle(transform_.position_.x + 50, transform_.position_.y,50))
 		{
-			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
-			assert(sound3 != -1);
-			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			//assert(sound3 != -1);
+			//PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			PlaySoundFile("Assets/Quiz-Wrong_Buzzer01-1.MP3", DX_PLAYTYPE_BACK);
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-		/*else
-		{
-			DeleteSoundMem(sound3);
-		}*/
+		//else
+		//{
+		//	StopSoundMem(sound3);
+		//}
 	}
 
 	std::list<FireBall*>pFireBalls = GetParent()->FindGameObjects<FireBall>();
@@ -257,17 +259,18 @@ void Player::Update()
 	{
 		if (pFireBall->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, + 50))
 		{
-			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
-			assert(sound3 != -1);
-			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			//assert(sound3 != -1);
+			//PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			PlaySoundFile("Assets/Quiz-Wrong_Buzzer01-1.MP3", DX_PLAYTYPE_BACK);
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-		/*else
-		{
-			DeleteSoundMem(sound3);
-		}*/
+		//else
+		//{
+		//	StopSoundMem(sound3);
+		//}
 	}
 	
 	std::list<Goal*>pGoals = GetParent()->FindGameObjects<Goal>();
@@ -275,17 +278,18 @@ void Player::Update()
 	{
 		if (pGoal->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, +50))
 		{
-			sound2 = LoadSoundMem("Assets/ooatari2.MP3");
-			assert(sound2 != -1);
-			PlaySoundMem(sound2, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//sound2 = LoadSoundMem("Assets/ooatari2.MP3");
+			//assert(sound2 != -1);
+			//PlaySoundMem(sound2, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			PlaySoundFile("Assets/ooatari2.MP3", DX_PLAYTYPE_BACK);
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
 			KillMe();
 		}
-		/*else
-		{
-			DeleteSoundMem(sound2);
-		}*/
+		//else
+		//{
+		//	StopSoundMem(sound2);
+		//}
 	}
 
 	std::list<CannonBullet*>pCB = GetParent()->FindGameObjects<CannonBullet>();
@@ -293,17 +297,18 @@ void Player::Update()
 	{
 		if (pCannonBullet->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
 		{
-			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
-			assert(sound3 != -1);
-			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			//assert(sound3 != -1);
+			//PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			PlaySoundFile("Assets/Quiz-Wrong_Buzzer01-1.MP3", DX_PLAYTYPE_BACK);
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-		/*else
-		{
-			DeleteSoundMem(sound3);
-		}*/
+		//else
+		//{
+		//	StopSoundMem(sound3);
+		//}
 	}
 
 	std::list<thorn2*>pt2 = GetParent()->FindGameObjects<thorn2>();
@@ -311,17 +316,18 @@ void Player::Update()
 	{
 		if (pthorn2->ColliderCircle(transform_.position_.x + 50, transform_.position_.y, 50))
 		{
-			sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
-			assert(sound3 != -1);
-			PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			//sound3 = LoadSoundMem("Assets/Quiz-Wrong_Buzzer01-1.MP3");
+			//assert(sound3 != -1);
+			//PlaySoundMem(sound3, DX_PLAYTYPE_BACK); // âπê∫Ççƒê∂
+			PlaySoundFile("Assets/Quiz-Wrong_Buzzer01-1.MP3", DX_PLAYTYPE_BACK);
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 			KillMe();
 		}
-		/*else
-		{
-			DeleteSoundMem(sound3);
-		}*/
+		//else
+		//{
+		//	StopSoundMem(sound3);
+		//}
 	}
 }
 

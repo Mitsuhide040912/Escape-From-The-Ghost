@@ -15,16 +15,17 @@ void GameClear::Update()
 {
 	if (CheckHitKey(KEY_INPUT_T))
 	{
-		sound = LoadSoundMem("Assets/GB-Action-D10-1(Clear).MP3");
-		assert(sound != -1);
-		PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
+		//sound = LoadSoundMem("Assets/GB-Action-D10-1(Clear).MP3");
+		//assert(sound != -1);
+		//PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
+		PlaySoundFile("Assets/GB-Action-D10-1(Clear).MP3", DX_PLAYTYPE_BACK);
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TITLE);
 	}
-	else
-	{
-		DeleteSoundMem(sound);
-	}
+	//else
+	//{
+	//	StopSoundMem(sound);
+	//}
 }
 
 void GameClear::Draw()

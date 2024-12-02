@@ -16,12 +16,20 @@ void TitleScene::Update()
 {
 	if (CheckHitKey(KEY_INPUT_RETURN))
 	{
-		sound = LoadSoundMem("Assets/GB-Action-C06-1(Stage5).MP3");
-		assert(sound != -1);
-		PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
+		//sound = LoadSoundMem("Assets/GB-Action-C06-1(Stage5).MP3");
+		//assert(sound != -1);
+		//PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
+		PlaySoundFile("Assets/GB-Action-C06-1(Stage5).MP3", DX_PLAYTYPE_BACK);
+		// ‰¹—Ê‚ÌÝ’è
+		ChangeVolumeSoundMem(255 * 20 / 100, SHandle);
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_PLAY);
 	}
+	//else
+	//{
+	//	StopSoundMem(sound);
+	//}
+	//StopSoundMem(SHandle);
 }
 
 void TitleScene::Draw()
