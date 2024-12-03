@@ -20,6 +20,8 @@ void GameOverScene::Update()
 		//assert(sound != -1);
 		//PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
 		PlaySoundFile("Assets/GB-Action-D10-1(Clear).MP3", DX_PLAYTYPE_BACK);
+		// ‰¹—Ê‚ÌÝ’è
+		ChangeVolumeSoundMem(255 * 10 / 100, sound);
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TITLE);
 	}	

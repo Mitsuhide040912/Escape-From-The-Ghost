@@ -21,7 +21,7 @@ void TitleScene::Update()
 		//PlaySoundMem(sound, DX_PLAYTYPE_BACK); // ‰¹º‚ðÄ¶
 		PlaySoundFile("Assets/GB-Action-C06-1(Stage5).MP3", DX_PLAYTYPE_BACK);
 		// ‰¹—Ê‚ÌÝ’è
-		ChangeVolumeSoundMem(255 * 20 / 100, SHandle);
+		ChangeVolumeSoundMem(255 * 10 / 100, SHandle);
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_PLAY);
 	}
