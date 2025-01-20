@@ -15,7 +15,7 @@
 #include "Engine//SceneManager.h"
 namespace
 {
-	float MOVE_SPEED = 3.5f;
+	float MOVE_SPEED = 1.5f;
 	float GRUVITY = 2.0f / 100.0f; //d—Í
 	float GROUND = 300.0f;
 	float JUMP_HEIGHT = 60.0f * 2.0f;//ƒWƒƒƒ“ƒv‚Ì‚‚³

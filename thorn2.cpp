@@ -3,8 +3,9 @@
 #include <assert.h>
 thorn2::thorn2(GameObject* parent)
 {
-	hImage = LoadGraph("Assets/Dossun2.png");
+	hImage = LoadGraph("Assets/Stone.png");
 	assert(hImage > 0);
+	
 	transform_.position_.x;
 	transform_.position_.y;
 }
@@ -19,6 +20,7 @@ thorn2::~thorn2()
 
 void thorn2::Update()
 {
+	transform_.rotate_.x = 180;
 	int x = (int)transform_.position_.x;
 	int y = (int)transform_.position_.y;
 }
